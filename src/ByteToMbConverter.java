@@ -1,17 +1,18 @@
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class ByteToMbConverter {
     public static void main(String[] args) {
-        // Insira os Bytes abaixo.
-        BigInteger[] byteValues = {
-                new BigInteger("10240000000000"), // Exemplo de valor
-        };
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o número de bytes: ");
+        BigInteger bytes = scanner.nextBigInteger();
 
         // Convertendo bytes para KB, MB, GB ou TB
-        for (BigInteger bytes : byteValues) {
-            String result = formatBytes(bytes);
-            System.out.printf("%s bytes = %s%n", bytes.toString(), result);
-        }
+        String result = formatBytes(bytes);
+        System.out.printf("%s bytes = %s%n", bytes.toString(), result);
+
+        scanner.close();
     }
 
     // Método para formatar o valor em KB, MB, GB ou TB
