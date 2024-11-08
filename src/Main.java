@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
 
-public class ByteConverter {
+public class Main {
     static BigInteger[] vetor;
     static BigInteger bytes;
 
