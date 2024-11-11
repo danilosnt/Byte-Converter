@@ -33,27 +33,26 @@ public class Main {
         BigInteger oneGB = oneMB.multiply(oneKB); // 1024 MB
         BigInteger oneTB = oneGB.multiply(oneKB); // 1024 GB
 
-        // If bytes >= 1 TB
         if (bytes.compareTo(oneTB) >= 0) {
             BigDecimal tb = new BigDecimal(bytes).divide(new BigDecimal(oneTB), 2, RoundingMode.HALF_UP);
             return tb.toString().replace(".", ",") + " TB";
         }
-        // If bytes >= 1 GB
+
         else if (bytes.compareTo(oneGB) >= 0) {
             BigDecimal gb = new BigDecimal(bytes).divide(new BigDecimal(oneGB), 2, RoundingMode.HALF_UP);
             return gb.toString().replace(".", ",") + " GB";
         }
-        // If bytes >= 1 MB
+
         else if (bytes.compareTo(oneMB) >= 0) {
             BigDecimal mb = new BigDecimal(bytes).divide(new BigDecimal(oneMB), 2, RoundingMode.HALF_UP);
             return mb.toString().replace(".", ",") + " MB";
         }
-        // If bytes >= 1 KB
+
         else if (bytes.compareTo(oneKB) >= 0) {
             BigDecimal kb = new BigDecimal(bytes).divide(new BigDecimal(oneKB), 2, RoundingMode.HALF_UP);
             return kb.toString().replace(".", ",") + " KB";
         }
-        // Return bytes if (bytes > 1kb)
+
         else {
             return bytes.toString() + " bytes";
         }
