@@ -28,57 +28,17 @@ public class Main {
     }
 
     public static String formatBytes(BigInteger bytes) {
+        String[] units = {"bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "BB"};
         BigInteger oneKB = new BigInteger("1024");
-        BigInteger oneMB = oneKB.multiply(oneKB);
-        BigInteger oneGB = oneMB.multiply(oneKB);
-        BigInteger oneTB = oneGB.multiply(oneKB);
-        BigInteger onePB = oneTB.multiply(oneKB);
-        BigInteger oneEB = onePB.multiply(oneKB);
-        BigInteger oneZB = oneEB.multiply(oneKB);
-        BigInteger oneYB = oneZB.multiply(oneKB);
 
-        if (bytes.compareTo(oneYB) >= 0 ) {
-            BigDecimal yb = new BigDecimal(bytes).divide(new BigDecimal(oneYB), 2, RoundingMode.HALF_UP);
-            return yb.toString().replace(".", ",") + " YB";
+        int unitIndex = 0;
+        BigDecimal value = new BigDecimal(bytes);
+
+        while (value.compareTo(new BigDecimal(oneKB)) >= 0 && unitIndex < units.length - 1) {
+            value = value.divide(new BigDecimal(oneKB), 2, RoundingMode.HALF_UP);
+            unitIndex++;
         }
 
-        else if (bytes.compareTo(oneZB) >= 0 ) {
-            BigDecimal zb = new BigDecimal(bytes).divide(new BigDecimal(oneZB),2, RoundingMode.HALF_UP);
-            return zb.toString().replace(".", ",") + " ZB";
-        }
-
-        else if (bytes.compareTo(oneEB) >= 0 ) {
-            BigDecimal eb = new BigDecimal(bytes).divide(new BigDecimal(oneEB), 2, RoundingMode.HALF_UP);
-            return eb.toString().replace(".", ",") + " EB";
-        }
-
-        else if (bytes.compareTo(onePB) >= 0 ) {
-            BigDecimal pb = new BigDecimal(bytes).divide(new BigDecimal(onePB), 2, RoundingMode.HALF_UP);
-            return pb.toString().replace(".", ",") + " PB";
-        }
-
-        else if (bytes.compareTo(oneTB) >= 0) {
-            BigDecimal tb = new BigDecimal(bytes).divide(new BigDecimal(oneTB), 2, RoundingMode.HALF_UP);
-            return tb.toString().replace(".", ",") + " TB";
-        }
-
-        else if (bytes.compareTo(oneGB) >= 0) {
-            BigDecimal gb = new BigDecimal(bytes).divide(new BigDecimal(oneGB), 2, RoundingMode.HALF_UP);
-            return gb.toString().replace(".", ",") + " GB";
-        }
-
-        else if (bytes.compareTo(oneMB) >= 0) {
-            BigDecimal mb = new BigDecimal(bytes).divide(new BigDecimal(oneMB), 2, RoundingMode.HALF_UP);
-            return mb.toString().replace(".", ",") + " MB";
-        }
-
-        else if (bytes.compareTo(oneKB) >= 0) {
-            BigDecimal kb = new BigDecimal(bytes).divide(new BigDecimal(oneKB), 2, RoundingMode.HALF_UP);
-            return kb.toString().replace(".", ",") + " KB";
-        }
-
-        else {
-            return bytes.toString() + " bytes";
-        }
+        return value.toString().replace(".", ",") + " " + units[unitIndex];
     }
 }
