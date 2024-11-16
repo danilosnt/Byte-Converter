@@ -14,6 +14,7 @@ public class Main {
 
         quantityNumber = new BigInteger[quantity];
 
+        // Número sugerido: 1208925819614629174706175 (1 YB)
         for (int i = 0; i < quantity; i++) {
             System.out.print("Enter the numbers of bytes: ");
             bytes = scanner.nextBigInteger();
@@ -28,7 +29,7 @@ public class Main {
     }
 
     public static String formatBytes(BigInteger bytes) {
-        String[] units = {"bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "BB"};
+        String[] units = {"bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"};
         BigInteger oneKB = new BigInteger("1024");
 
         int unitIndex = 0;
