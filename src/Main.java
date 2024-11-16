@@ -14,7 +14,7 @@ public class Main {
 
         quantityNumber = new BigInteger[quantity];
 
-        // Número sugerido: 1208925819614629174706175 (1 YB)
+        // Suggested number: 1208925819614629174706175 (1 YB)
         for (int i = 0; i < quantity; i++) {
             System.out.print("Enter the numbers of bytes: ");
             bytes = scanner.nextBigInteger();
