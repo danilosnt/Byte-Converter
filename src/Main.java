@@ -15,8 +15,10 @@ public class Main {
             System.out.println("\n===== Menu =====");
             System.out.println("1. Register number of bytes");
             System.out.println("2. List registered numbers");
-            System.out.println("3. Convert values");
-            System.out.println("4. Exit");
+            System.out.println("3. Modify registered number");
+            System.out.println("4. Delete registered number");
+            System.out.println("5. Convert values");
+            System.out.println("6. Exit");
             System.out.print("Choose an option: ");
             option = scanner.nextInt();
 
@@ -28,15 +30,21 @@ public class Main {
                     listValues();
                     break;
                 case 3:
-                    convertValues();
+                    modifyValue(scanner);
                     break;
                 case 4:
+                    deleteValue(scanner);
+                    break;
+                case 5:
+                    convertValues();
+                    break;
+                case 6:
                     System.out.println("Ending the program...");
                     break;
                 default:
                     System.out.println("Invalid option!");
             }
-        } while (option != 4);
+        } while (option != 6);
 
         scanner.close();
     }
@@ -63,6 +71,52 @@ public class Main {
                 System.out.printf("%d. %s bytes%n", i + 1, values.get(i).toString());
             }
         }
+    }
+
+    private static void modifyValue(Scanner scanner) {
+        if (values.isEmpty()) {
+            System.out.println("\nNo value to modify.");
+            return;
+        }
+
+        listValues();
+        System.out.print("\nEnter the number of the value you want to modify: ");
+        int index = scanner.nextInt();
+
+        if (index < 1 || index > values.size()) {
+            System.out.println("Invalid index. Returning to the menu...");
+            return;
+        }
+
+        System.out.print("Enter the new number of bytes: ");
+        BigInteger newValue = scanner.nextBigInteger();
+
+        if (newValue.equals(BigInteger.ZERO)) {
+            System.out.println("0 bytes cannot be registered. Returning to the menu...");
+            return;
+        }
+
+        values.set(index - 1, newValue);
+        System.out.println("\nValue modified successfully!");
+    }
+
+    private static void deleteValue(Scanner scanner) {
+        if (values.isEmpty()) {
+            System.out.println("\nNo value to delete.");
+            return;
+        }
+
+        listValues();
+        System.out.print("\nEnter the number of the value you want to delete: ");
+        int index = scanner.nextInt();
+
+        if (index < 1 || index > values.size()) {
+            System.out.println("Invalid index. Returning to the menu...");
+            return;
+        }
+
+        values.remove(index - 1);
+        System.out.println("\nValue deleted successfully!");
     }
 
     private static void convertValues() {
