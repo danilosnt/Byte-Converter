@@ -23,7 +23,7 @@ public class ValueManager {
 
     public static ArrayList<Value> listValues(int userId) {
         ArrayList<Value> values = new ArrayList<>();
-        String selectQuery = "SELECT * FROM values WHERE user_id = ?";
+        String selectQuery = "SELECT id, byte_value, user_id FROM values WHERE user_id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(selectQuery)) {
@@ -32,7 +32,7 @@ public class ValueManager {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                values.add(new Value(rs.getLong("byte_value"), rs.getInt("user_id")));
+                values.add(new Value(rs.getInt("id"), rs.getLong("byte_value"), rs.getInt("user_id")));
             }
 
         } catch (SQLException e) {
@@ -41,6 +41,7 @@ public class ValueManager {
 
         return values;
     }
+
 
     public static boolean modifyValue(long newByteValue, int valueId, int userId) {
         String updateQuery = "UPDATE values SET byte_value = ? WHERE id = ? AND user_id = ?";

@@ -28,10 +28,10 @@ public class Main {
 
                     userId = Login.authenticate(username, password);
                     if (userId != -1) {
-                        System.out.println("Login successful!");
+                        System.out.println("\nLogin successful!");
                         showValueMenu(scanner, userId);
                     } else {
-                        System.out.println("Invalid username or password.");
+                        System.out.println("\nInvalid username or password.");
                     }
                     break;
 
@@ -43,9 +43,9 @@ public class Main {
                     password = scanner.nextLine();
 
                     if (Login.registerUser(username, password)) {
-                        System.out.println("User registered successfully!");
+                        System.out.println("\nUser registered successfully!");
                     } else {
-                        System.out.println("Error registering user.");
+                        System.out.println("\nError registering user.");
                     }
                     break;
 
@@ -70,7 +70,7 @@ public class Main {
             System.out.println("2. List registered numbers");
             System.out.println("3. Modify registered number");
             System.out.println("4. Delete registered number");
-            System.out.println("5. Convert values");
+            System.out.println("5. Convert a value individualy");
             System.out.println("6. Logout");
             System.out.print("Choose an option: ");
             valueOption = scanner.nextInt();
@@ -103,53 +103,54 @@ public class Main {
     }
 
     private static void registerValue(Scanner scanner, int userId) {
-        System.out.print("Enter number of bytes to register: ");
+        System.out.print("\nEnter number of bytes to register: ");
         long byteValue = scanner.nextLong();
         if (ValueManager.registerValue(byteValue, userId)) {
-            System.out.println("Value registered successfully.");
+            System.out.println("\nValue registered successfully.");
         } else {
-            System.out.println("Error registering value.");
+            System.out.println("\nError registering value.");
         }
     }
 
     private static void listValues(int userId) {
         ArrayList<Value> values = ValueManager.listValues(userId);
         if (values.isEmpty()) {
-            System.out.println("No values found.");
+            System.out.println("\nNo values found.");
         } else {
-            int count = 1;
             for (Value value : values) {
-                System.out.println(count + ". " + value.getByteValue() + " = " + ValueConverter.convert(value.getByteValue()));
-                count++;
+                System.out.println("ID " + value.getId() + ": " + value.getByteValue() + " = " + ValueConverter.convert(value.getByteValue()));
             }
         }
     }
 
+
     private static void modifyValue(Scanner scanner, int userId) {
-        System.out.print("Enter value ID to modify: ");
+        listValues(userId);
+        System.out.print("\nEnter value ID to modify: ");
         int valueId = scanner.nextInt();
-        System.out.print("Enter new byte value: ");
+        System.out.print("\nEnter new byte value: ");
         long newByteValue = scanner.nextLong();
         if (ValueManager.modifyValue(newByteValue, valueId, userId)) {
-            System.out.println("Value modified successfully.");
+            System.out.println("\nValue modified successfully.");
         } else {
-            System.out.println("Error modifying value.");
+            System.out.println("\nError modifying value.");
         }
     }
 
     private static void deleteValue(Scanner scanner, int userId) {
-        System.out.print("Enter value ID to delete: ");
+        listValues(userId);
+        System.out.print("\nEnter value ID to delete: ");
         int valueId = scanner.nextInt();
         if (ValueManager.deleteValue(valueId, userId)) {
-            System.out.println("Value deleted successfully.");
+            System.out.println("\nValue deleted successfully.");
         } else {
-            System.out.println("Error deleting value.");
+            System.out.println("\nError deleting value.");
         }
     }
 
     private static void convertValues(Scanner scanner) {
-        System.out.print("Enter byte value to convert: ");
+        System.out.print("\nEnter byte value to convert: ");
         long byteValue = scanner.nextLong();
-        System.out.println("Converted value: " + ValueConverter.convert(byteValue));
+        System.out.println("\nConverted value: " + ValueConverter.convert(byteValue));
     }
 }
