@@ -3,8 +3,8 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 src/postgresql-42.7.3.jar
-src/DatabaseConnection
-src/Login
+src/DatabaseConnection.java
+src/Login.java
 
 ### Eclipse ###
 .apt_generated
