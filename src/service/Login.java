@@ -23,7 +23,7 @@ public class Login {
             System.out.println("Error during authentication: " + e.getMessage());
         }
 
-        return -1;  // Usuário não encontrado
+        return -1;  // User not found
     }
 
     public static boolean registerUser(String username, String password) {
