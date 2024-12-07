@@ -6,3 +6,9 @@
 4º - In ```DatabaseConnection.java``` enter your username and password <br>
 5º - Run ```Main.java```
 
+##  <img align="center" alt="Imagem Java" height="35" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"> Code Structure 
+
+<h3>Libraries</h3>
+<h5>Main</h5>
+
+* ```java.util.ArrayList```
