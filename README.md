@@ -11,21 +11,21 @@
 <h3>Libraries</h3>
 <h5>Main.java</h5>
 
-* ```java.util.ArrayList```
-* ```java.util.Scanner```
+* ```java.util.ArrayList``` = Automatically stores a list of values
+* ```java.util.Scanner``` = Read what is typed in the console
 
 <h5>Login.java</h5>
 
-* ```java.sql.Connection```
-* ```java.sql.PreparedStatement```
-* ```java.sql.ResultSet```
-* ```java.sql.SQLException```
+* ```java.sql.Connection``` = Establishes a connection to the database
+* ```java.sql.PreparedStatement``` = Prepares SQL queries securely and efficiently
+* ```java.sql.ResultSet``` = Stores the results of a database query 
+* ```java.sql.SQLException``` = Represents errors related to database operations
 
 <h5>DatabaseConnection</h5>
 
-* ```java.sql.Connection```
-* ```java.sql.DriverManager```
-* ```java.sql.SQLException```
+* ```java.sql.Connection``` = Establishes a connection to the database
+* ```java.sql.DriverManager``` = Sets up and create connections to the database
+* ```java.sql.SQLException``` = Represents errors related to database operations
 
 <h5>ValueManager.java</h5>
 
