@@ -26,14 +26,3 @@
 * ```java.sql.Connection``` = Establishes a connection to the database
 * ```java.sql.DriverManager``` = Sets up and create connections to the database
 * ```java.sql.SQLException``` = Represents errors related to database operations
-
-<h5>ValueManager.java</h5>
-
-* ```java.sql.*``` = Provides tools for connecting to databases, running queries and managing data
-* ```java.util.ArrayList``` = Automatically stores a list of values
-
-<h5>ValueConverter.java</h5>
-
-* ```java.math.BigDecimal``` = Rrepresent numbers with high precision, especially useful for calculations or any operation that requires many decimal digits
-* ```java.math.RoudingMode``` = Defines different rounding strategies, like rounding up, down, or to the nearest value, when performing operations with decimal numbers
-
