@@ -6,4 +6,4 @@
 4º - In ```DatabaseConnection.java``` enter your username and password <br>
 5º - Run ```Main.java```
 
-## Code Structure 
+<h3>Code Structure</h3>
