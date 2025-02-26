@@ -37,6 +37,3 @@
 * ```java.math.BigDecimal``` = Rrepresent numbers with high precision, especially useful for calculations or any operation that requires many decimal digits
 * ```java.math.RoudingMode``` = Defines different rounding strategies, like rounding up, down, or to the nearest value, when performing operations with decimal numbers
 
-<h5>Value</h5>
-
-* No libraries used
