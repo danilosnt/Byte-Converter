@@ -54,4 +54,19 @@ Register a new user in the users table with the provided username and password. 
 
 ```java
 public static boolean registerUser(String username, String password) {
-  String insertQuery = "INSERT INTO users (username, password) VALUES (? , ?);
+  String insertQuery = "INSERT INTO users (username, password) VALUES (? , ?)";
+
+  try (Connection connection = DatabaseConnection.getConnection();
+    PreparedStatement ps = connection.prepareStatement(insertQuery)) {
+
+    ps.setString(1, username);
+    ps.setString(2, password);
+    int result = ps.executeUpdate();
+
+    return result > 0;
+  } catch (SQLException e) {
+    System.out.println("Error during user registration: " + e.getMessage());
+    return false;
+  }
+}
+}
