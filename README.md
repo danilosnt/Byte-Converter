@@ -94,3 +94,29 @@ public static boolean registerValue(long byteValue, int userId) {
   }
 }
 ```
+
+<h3>listValues</h3>
+
+Retrieve all recorded values for a user from the values table. Return a list of values associated with the userId.
+
+```java
+public static ArrayList<Value> listValues(int userId) {
+  ArrayList<Value> values = new ArrayList<>();
+  String selectQuery = "SELECT id, byte_value, user_id FROM values WHERE user_id = ?";
+
+  try (Connection connection = DatabaseConnection.getConnection();
+    PreparedStatement ps = connection.prepareStatement(selectQuery)) {
+
+    ps.setInt(1, userId);
+    ResultSet rs = ps.executeQuery();
+
+    while (rs.next()) {
+      values.add(new Value(rs.getInt("id"), rs.getLong("byte_value"), rs.getInt("user_id")));
+    }
+
+  } catch (SQLException e) {
+    System.out.println("Error during value listing: " + e.getMessage());
+  }
+
+  return values;
+}
