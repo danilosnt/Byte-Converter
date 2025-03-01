@@ -69,4 +69,28 @@ public static boolean registerUser(String username, String password) {
     return false;
   }
 }
+```
+
+<h3>registerValue</h3>
+
+Register a value in bytes for a user in the values table. Return true if the insertion is successful; otherwise, return false.
+
+```java
+
+public static boolean registerValue(long byteValue, int userId) {
+  String insertQuery = "INSERT INTO values (byte_value, user_id) VALUES (?, ?)";
+
+  try (Connection connection = DatabaseConnection.getConnection();
+    PreparedStatement ps = connection.prepareStatement(insertQuery)) {
+
+    ps.setLong(1, byteValue);
+    ps.setInt(2, userId);
+
+    int result = ps.executeUpdate();
+    return result > 0;
+  } catch (SQLException e) {
+    System.out.println("Error during value registration: " + e.getMessage());
+    return false;
+  }
 }
+```
