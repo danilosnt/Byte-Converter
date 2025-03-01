@@ -48,3 +48,10 @@ public static int authenticate (String username, String password) {
 }
 ```
 
+<h3>registerUser</h3>
+
+Register a new user in the users table with the provided username and password. Return true if the insertion is successful; otherwise, return false.
+
+```java
+public static boolean registerUser(String username, String password) {
+  String insertQuery = "INSERT INTO users (username, password) VALUES (? , ?);
