@@ -145,3 +145,27 @@ public static boolean modifyValue(long newByteValue, int valueId, int userId) {
   }
 }
 ```
+
+<h3>deleteValue</h3>
+
+Delete a value from the values table based on the value ID and user ID. Return true if the deletion is successful; otherwise, return false.
+
+```java
+public static boolean deleteValue(int valueId, int userId) {
+  String deleteQuery = "DELETE FROM values WHERE id = ? AND user_id = ?";
+
+  try (Connection connection = DatabaseConnection.getConnection();
+    PreparedStatement ps = connection.prepareStatement(deleteQuery)) {
+
+    ps.setInt(1, valueId);
+    ps.setInt(2, userId);
+
+    int result = ps.executeUpdate();
+    return result > 0;
+  } catch (SQLException e) {
+    System.out.println("Error during value deletion: " + e.getMessage());
+    return false;
+  }
+}
+```
+```
